@@ -1,0 +1,28 @@
+:root {
+    --background: #6d6a6a;
+    --texto-principal: #fff;
+    --texto-sub: #fff;
+    --fonte: Arial;
+}
+body{
+    background: var(--background);
+    font-family: var(--fonte);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vh;
+}
+h1 {
+    color: var(--texto-principal);
+}
+.texto {
+    display: none;
+    color: var(--texto-sub);
+}
+.botao{
+    padding: 5px 30px;
+    border-radius: 4px;
+}
+.ativar {
+    display: block;
+}
