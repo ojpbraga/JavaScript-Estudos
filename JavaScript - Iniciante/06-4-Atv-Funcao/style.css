@@ -1,11 +1,11 @@
-/* html{
+html{
     cursor: none;
-} */
+}
 .circulo{
-    /* width: 16px;
+    width: 16px;
     height: 16px;
     background: #999;
-    border-radius: 100%; */
+    border-radius: 100%;
     position: absolute;    
 }
 img{
