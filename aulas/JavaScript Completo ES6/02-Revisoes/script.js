@@ -152,3 +152,95 @@ function imc(peso, altura) {
     return imc; // Senão tivesse return, retornaria Underfined
 }
 console.log(imc(67, 1.7));
+
+// Objetos
+var pessoa = {
+    nome: 'JP',
+    idade: 19,
+}
+console.log(typeof pessoa);
+console.log(pessoa)
+
+// Métodos
+// Propriedade que possui uma função no local do seu valor
+// O this faz referência ao próprio objeto
+// È sempre importante colocar a vígula no final, mesmo que não há mais propriedade ou função
+var quadrado = {
+    lados: 4,
+    area: function(lado) {
+        return lado * lado;
+    },
+    // ES6 é possível fazer a function de forma simplificada
+    perimetro(lado) {
+        return this.lados*lado;
+    },
+}
+console.log(quadrado.area(5));
+console.log(quadrado.perimetro(3));
+console.table(pessoa);
+// Exemplo de objeto é a biblioteca Math
+
+// Senão tiver o this, ele vai pegar o valor do height de fora do escopo
+var height = 100;
+var menu = {
+    width: 800,
+    height: 60,
+    backgroundColor: "#e7e7e7",
+    metadeHeight() {
+        return height / 2;
+    },
+}
+
+menu.backgroundColor = "#000";
+menu.color = "blue";
+menu.esconder = function() {
+    console.log('Escondeu');
+}
+console.log(menu.metadeHeight());
+console.log(menu);
+
+
+// Protótipo e Herança
+// Objeto herda propriedades e métodos do objeto que foi utilizado para criar o mesmo
+// Verifica se a propriedade foi criada no objeto:
+console.log(menu.hasOwnProperty('backgroundColor'));
+
+// Exercícios
+// Crie um objeto com os seus dados pessoais
+var eu = {
+    nome: 'João',
+    nomeMeio: 'Pedro',
+    idade: 17,
+    nomeCompleto() {
+        return this.nome + " " + this.nomeMeio;
+    }
+}
+console.log(eu, eu.nomeCompleto());
+// Deve possui pelo menos duas propriedades nome e sobrenome
+
+// Crie um método no objeto anterior, que mostre o seu nome completo
+
+// Modifique o valor da propriedade preco para 3000
+var carro = {
+    preco: 1000,
+    portas: 4,
+    marca: 'Audi',
+}
+carro.preco = 3000;
+console.log(carro);
+
+
+// Crie um objeto de um cachorro que represente um labrador,
+// preto com 10 anos, que late ao ver um homem
+var cao = {
+    nome: 'Dudu',
+    especie: 'Labrador',
+    cor: 'Preto',
+    idade: 10,
+    verHomem() {
+        return 'Ua-Ua!';
+    }
+}
+console.log(cao);
+console.log(cao.verHomem());
+  
