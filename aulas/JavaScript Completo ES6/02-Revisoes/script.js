@@ -404,3 +404,50 @@ var possuiCasa = true;
 var darCredito;
 var resultadoCredito = possuiCasa && possuiCarro;
 console.log(resultadoCredito);
+
+
+// Escopo de Função
+// Variáveis declaradas dentro de funções não são acessadas fora das mesmas
+
+// Escopo Global
+// Declarar variáveis sem var, const ou let, cria uma variável que pode ser acessada em qualquer escopo. 'use stric' impede isso.
+
+// Escopo (Pai)
+// Variáveis declaradas no escopo pai da função, conseguem ser acessadas pelas funções.
+
+// Variáveis criadas com var, vazam o bloco. Por isso a melhor forma é utilizar const e let, porque elas respeitam o bloco.
+{
+    var mes = 'Dezembro'; 
+    console.log(mes);
+}
+console.log(mes);
+
+{
+    let mes2 = 'Dezembro';
+    console.log(mes2)
+}
+// console.log(mes2) Erro
+
+// Var vaza o bloco
+// Mesmo com condição falsa, a variável ainda será declarada utilizando hoisting e o valor ficará como underfined. O que tiver dentro do bloco pode não ser executado, mas ela existirá
+if(false) {
+    var carroMarca = 'Fusca';
+    console.log(carro);
+}
+console.log(carroMarca)
+
+// {} cria um bloco
+// Chaves criam um escopo de bloco para não confundir com a criação de objetos = {}
+{
+    var carro2 = "Ferrari";
+    const ano = 2018;
+}
+console.log(carro2);
+// console.log(ano); Erro not defined
+
+// For Loop
+// Ao utilizar var dentro de um for loop, o valor da variável utilizada irá vazar e existir fora do loop
+for(let i = 0; i < 10; i++) {
+    console.log(`Número ${i}`);
+}
+console.log(i); // var: vaza o valor do i, let não vaza
