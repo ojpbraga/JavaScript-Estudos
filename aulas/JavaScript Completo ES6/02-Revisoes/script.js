@@ -219,6 +219,10 @@ console.log(eu, eu.nomeCompleto());
 // Deve possui pelo menos duas propriedades nome e sobrenome
 
 // Crie um método no objeto anterior, que mostre o seu nome completo
+eu.nomeTodo = function() {
+    return `${this.nome} ${this.nomeMeio}`;
+}
+console.log(eu.nomeTodo());
 
 // Modifique o valor da propriedade preco para 3000
 var carro = {
@@ -234,13 +238,129 @@ console.log(carro);
 // preto com 10 anos, que late ao ver um homem
 var cao = {
     nome: 'Dudu',
-    especie: 'Labrador',
+    raca: 'Labrador',
     cor: 'Preto',
     idade: 10,
-    verHomem() {
-        return 'Ua-Ua!';
+    latir(pessoa) {
+        if(pessoa === 'homem') {
+            return 'Ua-Ua!';
+        }
     }
 }
 console.log(cao);
-console.log(cao.verHomem());
-  
+console.log(cao.latir('homem'));
+
+// Métodos
+// nome.length()
+// altura.toString() // Transforma numero em string
+// altura.toFixed() // Arredonda valor float
+
+
+// Selecionando trazendo um objeto do html
+// var btn = document.querySelector('.btn');
+
+// esse elemento também possui métodos e propriedade, como:
+// btn.addEventListener('click', function());
+// btn.classList
+
+// Exercícios
+// nomeie 3 propriedades ou métodos de strings
+var cachorro = "Spique";
+// fixed
+// length
+// addEventListener
+
+// nomeie 5 propriedades ou métodos de elementos do DOM
+// var btn = document.getElementById('btn');
+// btn.innerHTML()
+// btn.toggleAttribute()
+// btn.addEventListener()
+// btn.value 
+// btn.appendChild
+
+// busque na web um objeto (método) capaz de interagir com o clipboard, 
+// clipboard é a parte do seu computador que lida com o CTRL + C e CTRL + V
+
+const botao = document.querySelector('.botao');
+// console.log(botao)
+
+botao.addEventListener('click', () => {
+    var texto = document.querySelector('input');
+    texto.select();
+
+    navigator.clipboard.writeText(texto.value);
+    alert("Texto copiad: " + texto.value);
+})
+
+
+// Array
+var videoGames =['Switch', 'PS5', 'Xbox'];
+console.log(videoGames[0]);
+console.log(videoGames[2])
+
+// Métodos
+console.log(videoGames.pop()); // Remove o último item
+videoGames.push('Nintendo');
+console.log(videoGames);
+console.log(videoGames.length);
+
+// Loops: OK
+var i = 0;
+while (i < 10) {
+    console.log(i);
+    i++
+}
+
+var e = 5;
+do {
+    console.log(e);
+} while (e < 5);
+
+for (var item = 0; item < videoGames.length; item++) {
+    console.log(videoGames[item]);
+    break;
+    if(videoGames[item] === 'Nintendo') {
+        console.log(videoGames[item]);
+    }
+}
+
+// forEach(): OK
+var frutas = ['Maça', 'Laranja', 'Pera'];
+frutas.forEach((fruta, index, array) => {
+    console.log(`${fruta} é uma delícia! Index: ${index}`);
+    if(index === array.length - 1) {
+        console.log(array);
+    }
+});
+
+var numero = 0; 
+var maximo = 10;
+for(; numero < maximo;) {
+    console.log(numero);
+    numero++;
+}
+
+// Crie uma array com os anos que o Brasil ganhou a copa
+// 1959, 1962, 1970, 1994, 2002
+var brasilGanhou = [1959, 1962, 1970, 1994, 2002];
+
+// Interaja com a array utilizando um loop, para mostrar
+// no console a seguinte mensagem, `O brasil ganhou a copa de ${ano}`
+brasilGanhou.forEach((ano) => {
+    console.log(`Brasil ganhou em ${ano}`);
+})
+
+// Interaja com um loop nas frutas abaixo e pare ao chegar em Pera
+var frutas = ['Banana', 'Maçã', 'Pera', 'Uva', 'Melância']
+for(var i = 0; i < frutas.length; i++) {
+    console.log(frutas[i]);
+    if(frutas[i] === 'Pera') {
+        break;
+    }
+}
+
+// Coloque a última fruta da array acima em uma variável,
+// sem remover a mesma da array.
+
+var ultimaFruta = frutas[frutas.length - 1];
+console.log(ultimaFruta);
