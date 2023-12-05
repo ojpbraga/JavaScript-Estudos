@@ -434,7 +434,7 @@ if(false) {
     var carroMarca = 'Fusca';
     console.log(carro);
 }
-console.log(carroMarca)
+console.log(carroMarca);
 
 // {} cria um bloco
 // Chaves criam um escopo de bloco para não confundir com a criação de objetos = {}
@@ -442,12 +442,70 @@ console.log(carroMarca)
     var carro2 = "Ferrari";
     const ano = 2018;
 }
-console.log(carro2);
+console.log(carro2); // Carro
 // console.log(ano); Erro not defined
 
 // For Loop
 // Ao utilizar var dentro de um for loop, o valor da variável utilizada irá vazar e existir fora do loop
-for(let i = 0; i < 10; i++) {
-    console.log(`Número ${i}`);
+ii = 50
+
+for(let ii = 0; ii < 10; ii++) {
+    console.log(`Número ${ii}`);
 }
-console.log(i); // var: vaza o valor do i, let não vaza
+console.log(ii*5); // var: vaza o valor do i, let não vaza
+
+// Const 
+// Mantém o escopo no bloco, impede a redeclaração e impede a modificação do valor da variável.
+
+const semana = "sexta";
+// semana = "sexta"; Não pode declarar novamente
+
+const data = {
+    ano: 2018,
+    mes: 'Dezembro',
+}
+console.log(data);
+data.ano = 2027;
+console.log(data);
+data.dia = 21;
+console.log(data);
+// Posso acresentar ao objeto e mudar dados
+
+// Let
+// Mantém o escopo no bloco, impede a redeclaração, mas permite a modificação do valor da variável
+let ano;
+ano = 2018;
+ano++;
+console.log(ano); // 2019
+// let ano = 2020; Erro, redeclaração
+
+// Exercícios
+// Por qual motivo o código abaixo retorna com erros?
+{
+    var cor = 'preto';
+    const marca = 'Fiat';
+    let portas = 4;
+  }
+//   console.log(var, marca, portas);
+//   Porque estamos imprimindo a declaração de um tipo de variável. Marca: a variável const existe apenas dentro do escopo, ela não vaza. Portas: let não vaza
+  
+  // Como corrigir o erro abaixo?
+  const dois = 2;
+  function somarDois(x) {
+    return x + dois;
+  }
+  function dividirDois(x) {
+    return x + dois;
+  }
+  somarDois(4);
+  dividirDois(6);
+  
+  // O que fazer para total retornar 500?
+  const numero2 = 50;
+  
+  for(let numero2 = 0; numero2 < 10; numero2++) {
+    console.log(numero2);
+  }
+  
+  const total = 10 * numero2;
+  console.log(total);
