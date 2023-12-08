@@ -56,16 +56,39 @@ console.log(img.offsetHeight);
 const imgs = document.querySelectorAll('img');
 let largura = 0;
 console.log(imgs);
-imgs.forEach((img)=> {
-    largura += img.clientWidth;
+// Seria mais interessante utilizar onload, pois as imagens são corregadas depois do JS
+window.onload = () => {
+    imgs.forEach((img)=> {
+        largura += img.clientWidth;
+    });
     console.log(largura);
-});
+}
 
 // Verifique se os links da página possuem
 // o mínimo recomendado para telas utilizadas
 // com o dedo. (48px/48px de acordo com o google)
 const linksPagina = document.querySelectorAll('a');
+// for(let i = 0; i < linksPagina.length; i++) {
+//     if(linksPagina[i].clientHeight && linksPagina[i].clientWidth < 48) {
+//         console.log('Tamanho não recomendado para link');
+//     } else {
+//         console.log('Tamanho ok para links');
+//     }
+// }
 
+linksPagina.forEach((link) => {
+    if(link.offsetHeight < 48 && link.offsetWidth < 48) {
+        console.log('Tamanho não recomendado para link');
+    } else {
+        console.log('Tamanho ok')
+    }
+});
 
 // Se o browser for menor que 720px,
 // adicione a classe menu-mobile ao menu
+const medium = window.matchMedia('(max-width: 720px)');
+
+if(medium.matches) {
+    menu.classList.add('menu-mobile');
+}
+console.log(menu.classList);
