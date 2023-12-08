@@ -102,3 +102,6 @@ console.log(verificacao);
 // Modifique o href do link externo no menu
 menu.setAttribute('href', 'www.google.com');
 console.log(menu.attributes);
+// Forma correta:
+const link = document.querySelector('a[href^="http"]');
+link.setAttribute('href', 'https://www.google.com/');
