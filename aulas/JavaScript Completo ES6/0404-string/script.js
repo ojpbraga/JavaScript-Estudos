@@ -174,16 +174,44 @@ let transacoes = [
     },
   ];
 
+  // let total = 0;
+  // let novoTotal = 0;
+
+  // let recebimentoTotal = 0;
+  // let novoRecebimento = 0;
+
+  // transacoes.forEach((item, index) => {
+
+  //   if(item.descricao.includes('Taxa')) {
+  //       novoTotal = parseInt(item.valor.replace('R$ ', ''));
+  //       total += novoTotal;
+  //       console.log('Valor taxa: ', total);
+  //   } else if(item.descricao.includes('Recebimento')) {
+  //       novoRecebimento = parseInt(item.valor.replace('R$ ', ''));
+  //       recebimentoTotal += novoRecebimento;
+  //       console.log('Valor recebimento: ', recebimentoTotal);
+        
+  //   }
+
+  // })
+
+  // Correção:
+  let taxaTotal = 0;
+  let recebimentoTotal = 0;
   transacoes.forEach((item) => {
-    console.log(item.descricao);
-    if(item.descricao.search('Taxa')) {
-        console.log('tem taxa');
-        console.log(item.descricao.search('Taxa'))
+    const numeroLimpo = +item.valor.replace('R$ ', '');
+    if(item.descricao.slice(0, 4) === 'Taxa') {
+      taxaTotal += numeroLimpo;
+    } else if(item.descricao.slice(0, 4) === 'Rece') {
+      recebimentoTotal += numeroLimpo;
     }
   })
+  console.log(taxaTotal);
+  console.log(recebimentoTotal);
   
   // Retorne uma array com a lista abaixo
   const transportes = 'Carro;Avião;Trem;Ônibus;Bicicleta';
+  console.log(transportes.split(';'));
   
   // Substitua todos os span's por a's
   const html = `<ul>
@@ -191,12 +219,27 @@ let transacoes = [
                   <li><span>Produtos</span></li>
                   <li><span>Contato</span></li>
                 </ul>`;
+  const novoHtmlExc = html.split('span');
+  console.log(novoHtmlExc)
+  console.log(novoHtmlExc.join('a'));
+
   
   // Retorne o último caracter da frase
   const fraseExercicio = 'Melhor do ano!';
+  console.log(fraseExercicio[fraseExercicio.length - 1]);
   
   // Retorne o total de taxas
 transacoes = ['Taxa do Banco', '   TAXA DO PÃO', '  taxa do mercado', 'depósito Bancário', 'TARIFA especial'];
-  
-  
+
+let contador = 0;
+transacoes.forEach((item) => {
+    item = item.toUpperCase();
+    console.log(item.includes('TAXA'));
+
+    if(item.includes('TAXA') === true) {
+        contador++;
+    }
+
+});
+console.log(contador)
   
