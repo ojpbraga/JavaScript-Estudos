@@ -93,3 +93,49 @@ console.log(Math.random() * 500); // entre 0 e 500
 // Número random entre 72 e 32
 console.log(Math.floor(Math.random() * (72 - 32 + 1))+ 32);
 // console.log(Math.floor(Math.random() * (min - max + 1)) + min);
+
+// Exercício:
+// Retorne um número aleatório
+// entre 1050 e 2000
+console.log(Math.floor(Math.random() * (1050 - 2000 + 1)) + 2000);
+
+
+// Retorne o maior número da lista abaixo
+const numeros = '4, 5, 20, 8, 9';
+
+let novosNumeros = numeros.split(',');
+// let novaLista = [];
+// novosNumeros.forEach((numero) => {
+//     numero = numero.trim();
+//     numero = parseInt(numero);
+//     novaLista.push(numero);
+// })
+// console.log(novaLista);
+console.log('Maior número: ', Math.max(...novosNumeros));
+
+
+// Crie uma função para limpar os preços
+// e retornar os números com centavos arredondados
+// depois retorne a soma total
+const listaPrecos = ['R$ 59,99', ' R$ 100,222',
+                     'R$ 230  ', 'r$  200'];
+
+function limpaArray(reaisArray) {
+    let total = 0;
+    reaisArray.forEach((reais) => {
+        reais = reais.toUpperCase();
+        reais = reais.replace("R$", "");
+        reais = reais.trim();
+        reais = reais.replace(",", ".")
+        reais = parseFloat(reais);
+        reais = Math.round(reais);
+        // reais = toFixed(2)
+
+        total += reais;
+
+        console.log('Total: ', total.toLocaleString( 'pt-BR', {style: 'currency', currency: 'BRL'}));
+    });
+}
+
+limpaArray(listaPrecos);
+// Seria mais interessante: criar apenas a função que recebe os dados, limpa-los e, logo após, criar um forEach que passe esses valores para a função. No final, some.
