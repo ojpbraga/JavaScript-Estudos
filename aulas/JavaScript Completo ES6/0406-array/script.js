@@ -116,3 +116,119 @@ console.log(streaming);
 streaming.splice(3, 2, 'Ferrari');
 console.log(streaming.splice(1, 1, 'Wizard')); // retorna o item removido
 console.log(streaming);
+
+//  [].copyWithin() REVISAR
+// .copyWhithin()(alvo, inicio, final) a partir do alvo, ele irá copiar a array começando do início até o final e vai preencher a mesma com essa cópia. Caso omita os valores de início e final, ele irá utilizar como início o 0 e final o valor total da array.
+
+console.log(['item1', 'item 2', 'item 3', 'item 4', 'item 5'].copyWithin(2, 0, 2));
+
+
+// [].fill()
+// .fill(valor, inicio, final) preenche a array com o valor, do início até o fim.
+console.log(['item1', 'item 2', 'item 3', 'item 4'].fill('Banana', 1, 3));
+console.log(['item1', 'item 2', 'item 3', 'item 4'].fill('Banana'));
+
+
+// Métodos de acesso [].concat()
+// Os métodos abaixo não modificam a array original, apenas retornam uma array modificada .concat() irá concatenar a array com o valor passado.
+
+const transporte1 = ['Barco', 'Aviao'];
+const transporte2 = ['Carro', 'Moto'];
+const transportes = transporte1.concat(transporte2);
+console.log(transportes);
+
+const maisTransportes = [].concat(transporte1, transporte2, 'Van');
+console.log(maisTransportes);
+
+
+// [].includes(), [].indexOf e [].lastIndexOf()
+const linguagens = ['html', 'css', 'js', 'php', 'python', 'js'];
+
+console.log(linguagens.includes('css'));
+console.log(linguagens.includes('ruby'));
+console.log(linguagens.indexOf('python'));
+console.log(linguagens.indexOf('js'));
+console.log(linguagens.lastIndexOf('js'));
+
+
+// [].join()
+// .join() junta a array em uma string única
+console.log(linguagens.join()); // html,css,js,php...
+console.log(linguagens.join('')); // htmlcssjsphp...
+console.log(linguagens.join(' ')); // html css js php...
+console.log(linguagens.join('-_-')) // html-_-css-_-js-_-php
+
+let htmlString = '<h2>Título</h2>';
+htmlString = htmlString.split('h2');
+console.log(htmlString);
+htmlString = htmlString.join('h1');
+console.log(htmlString);
+
+
+// [].slice()
+// [].slice(inicio, final) retorna os itens da array começando pelo início e indo até o valor final.
+// linguagens;
+console.log(linguagens);
+console.log(linguagens.slice(3));
+console.log(linguagens.slice(1, 4));
+
+// Muito comum  CLONAR ARRAY UTILIZANDO SLICE
+// se clonar direto (clone = linguagens), estaremos fazendo uma referência a array linguagens original, ou seja, os métodos atribuídos ao clone, modificaram a array original. Quando utilizamos o slice (clone = linguagens.clice()), estaremos clonando o resultado do método, ou seja, a array original não sofrerá alteração.
+const cloneLinguagens = linguagens.slice();
+linguagens.pop();
+console.log(linguagens);
+console.log(cloneLinguagens);
+
+
+// Exercícios
+const comidas = ['Pizza', 'Frango', 'Carne', 'Macarrão'];
+// Remova o primeiro valor de comidas e coloque em uma variável
+// Remova o último valor de comidas e coloque em uma variável
+// Adicione 'Arroz' ao final da array
+// Adicione 'Peixe' e 'Batata' ao início da array
+const primeiraComida = comidas.shift();
+console.log(primeiraComida);
+console.log(comidas)
+
+const ultimaComida = comidas.pop();
+console.log(ultimaComida);
+console.log(comidas);
+
+// comidas.splice(comidas.length, 0, 'Arroz');
+comidas.push('Arroz');
+console.log(comidas);
+
+// comidas.splice(0, 0, 'Peixa', 'Batata');
+comidas.unshift('Peixe', 'Batata');
+console.log(comidas);
+
+
+const estudantes = ['Marcio', 'Brenda', 'Joana', 'Kleber', 'Julia'];
+// Arrume os estudantes em ordem alfabética
+// Inverta a ordem dos estudantes
+// Verifique se Joana faz parte dos estudantes
+// Verifique se Juliana faz parte dos estudantes
+
+estudantes.sort().reverse();
+console.log(estudantes.includes('Joana'));
+console.log(estudantes.includes('Juliana'));
+console.log(estudantes);
+
+let html = `<section>
+              <div>Sobre</div>
+              <div>Produtos</div>
+              <div>Contato</div>
+            </section>`
+// Substitua section por ul e div com li,
+// utilizando split e join
+html = html.split('section').join('ul');
+html = html.split('div').join('li');
+console.log(html)
+
+const automoveis = ['Ford', 'Fiat', 'VW', 'Honda'];
+// Remova o último carro, mas antes de remover
+// salve a array original em outra variável
+const cloneAutomoveis = automoveis.slice();
+automoveis.pop();
+console.log(automoveis);
+console.log(cloneAutomoveis);
