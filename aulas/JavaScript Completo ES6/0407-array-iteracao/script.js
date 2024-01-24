@@ -97,6 +97,8 @@ const aulas = [
     },
 ]
 
+// const cloneAulas = aulas.slice();
+
 const tempoAulas = aulas.map(aula => aula.min);
 console.log(tempoAulas);
 
@@ -166,3 +168,74 @@ const maiorValor = numbers.reduce((anterior, atual) => anterior > atual ? anteri
 console.log(maiorValor);
 
 
+// Criando Objeto com Reduce
+
+console.log(aulas);
+
+const listaAulas = aulas.reduce((anterior, aula, index) => {
+    // console.log(aula);
+    // console.log(aula.nome);
+    anterior[index] = aula.nome;
+    console.log(anterior)
+    return anterior;
+}, {});
+
+
+// [].reduceRight()
+// Existe também o método [].reduceRight(), a diferença é que este começa a iterar da direita para a esquerda, enquanto o reduce itera da esquerda para a direita.
+const frutas = ['Banana', 'Pêra', 'Uva'];
+const frutasRight = frutas.reduceRight((acumulador, item) => `${acumulador} ${item}`);
+console.log(frutasRight);
+
+const frutasLeft = frutas.reduce((acumulador, item) => `${acumulador} ${item}`);
+console.log(frutasLeft);
+
+
+// [].some()
+// Se pelo menos um return da iteração for truthy, ele retorna true.
+console.log(frutas);
+
+const temUva = frutas.some(fruta => fruta === 'Uva');
+console.log(temUva);
+
+const temMorango = frutas.some((fruta) => {
+    return fruta === 'Morango'; // Se não tiver o retunr, retornará false.
+});
+console.log(temMorango);
+
+
+// [].every()
+// Se todas as iterações forem truthy, o método irá retornar true. Se pelo menos um for falsy, ele irá retornar false.
+frutas.push('');
+console.log(frutas);
+// False, pois pelo menos uma fruta está vazia '', o que é um valor falsy
+const arrayCheias = frutas.every((fruta) => {
+    return fruta; // false pois tem uma string vazia
+});
+console.log(arrayCheias);
+
+const idades = [4, 53, 5, 21, 4, 5];
+const maiorQue3 = idades.every(n => n > 3);
+console.log(maiorQue3);
+
+
+// [].find() e [].findIndex()
+// [].find() retorna o valor atual da primeira iteração que retornar truthy. Já o .findIndex(), ao invés de retornar o valor, retorna o index deste valor na array.
+const mercado = ['Arroz', 'Feijão', 'Batata', 'Alface'];
+const buscaBatata = mercado.findIndex((item) => item === 'Batata');
+console.log(buscaBatata); // Retorna o index
+
+const indexArroz = mercado.findIndex((item) => {
+    return item === 'Arroz';
+})
+console.log('Index do Arroz: ',indexArroz);
+
+const notas = [34, 99, 22, 9, 88];
+const buscaMaior45 = notas.find(nota => nota > 45);
+console.log(buscaMaior45); // Retorna o primeiro item com esse valor.
+
+const bolsas = ['LV', 'Gucci', 'WE'];
+const buscaLV = bolsas.find((item) => {
+    return item === 'LV';
+})
+console.log('Find: ', buscaLV);
