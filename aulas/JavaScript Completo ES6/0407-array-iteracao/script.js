@@ -239,3 +239,19 @@ const buscaLV = bolsas.find((item) => {
     return item === 'LV';
 })
 console.log('Find: ', buscaLV);
+
+
+// [].filter()
+// Retorna uma array com a lista de valores que durante a sua iteração retornaram um valor truthy.
+const ecoBags = ['GG', '', 'Bey', null, 0, 'WH', undefined];
+
+const arrayLimpa = ecoBags.filter(item => item);
+console.log(arrayLimpa);
+
+const dinheiro = [23, 5000, 1, 0, 90];
+const dinheiroMaiorQ50 = dinheiro.filter(x => x > 50);
+console.log(dinheiroMaiorQ50);
+
+console.log(aulas);
+const aulasFilter = aulas.filter(aula => aula.min >= 15);
+console.log(aulasFilter);
