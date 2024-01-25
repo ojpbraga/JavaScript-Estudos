@@ -255,3 +255,68 @@ console.log(dinheiroMaiorQ50);
 console.log(aulas);
 const aulasFilter = aulas.filter(aula => aula.min >= 15);
 console.log(aulasFilter);
+
+
+// Exercício
+// Selecione cada curso e retorne uma array
+// com objetos contendo o título, descricao,
+// aulas e horas de cada curso
+let cursos = document.querySelectorAll('.curso');
+const cursosArray = Array.from(cursos);
+const cursosObjects = cursosArray.map((curso) => {
+    return {
+        titulo: curso.childNodes[1].innerHTML,
+        descricao: curso.childNodes[3].innerHTML,
+        aula: curso.childNodes[5].innerHTML,
+        hora: curso.childNodes[7].innerHTML
+    }
+})
+console.log(cursosObjects);
+// Se o nome da chave for igual ao da variável:
+// titulo: titulo pode ser titulo,
+
+// Retorne uma lista com os
+// números maiores que 100
+const numerosExer = [3, 44, 333, 23, 122, 322, 33];
+const maiorQ100 = numerosExer.filter(x => x > 100);
+console.log(maiorQ100);
+
+// Verifique se Baixo faz parte
+// da lista de instrumentos e retorne true
+const instrumentos = ['Guitarra', 'Baixo', 'Bateria', 'Teclado']
+const buscaBaixo = instrumentos.some(instrumento => instrumento === 'Baixo');
+console.log(buscaBaixo);
+
+
+// Retorne o valor total das compras
+const compras = [
+  {
+    item: 'Banana',
+    preco: 'R$ 4,99'
+  },
+  {
+    item: 'Ovo',
+    preco: 'R$ 2,99'
+  },
+  {
+    item: 'Carne',
+    preco: 'R$ 25,49'
+  },
+  {
+    item: 'Refrigerante',
+    preco: 'R$ 5,35'
+  },
+  {
+    item: 'Quejo',
+    preco: 'R$ 10,60'
+  }
+]
+
+const valorTotal = compras.reduce((acumulador, atual) => {
+
+    let preco = atual.preco.replace('R$', '').replace(',', '.').trim();
+    preco = parseFloat(preco);
+    
+    return preco + acumulador
+}, 0)
+console.log(valorTotal);
