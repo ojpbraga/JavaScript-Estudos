@@ -212,3 +212,50 @@ console.log(Object.isFrozen(carro));
 console.log(Object.isExtensible(carro));
 console.log(Object.isSealed(carro)); // Só é extensivel, quando não se previne a extensão
 
+
+// Propriedades e Métodos do Protótipo
+// Já que tudo em JS é objeto, as propriedades abaixo estão disponíveis em todos os objetos criados a partir de funções construtoras. {}.constructor retorna a função construtora do objeto.
+
+const mercado = ['Banana', 'Uva'];
+console.log(mercado.constructor);
+console.log(''.constructor);
+
+console.log(mercado.hasOwnProperty('map')); // false, pois é uma propriedade de Array.prototype, não é enumerável
+
+
+// {}.hasOwnProperty('prop') e {}.propertyIsEnumerable('prop')
+// Verifica se o objeto possui a propriedade. Verifica a propriedade direta do objeto e não a do prototype (não enumeráveis). O {}.propertyisEnumerable() verifica se a propriedade é enumerável.
+
+console.log(mercado);
+
+console.log(mercado.hasOwnProperty('map'));
+console.log(Array.hasOwnProperty('map'));
+console.log(Array.prototype.hasOwnProperty('map'));
+
+console.log(Array.prototype.propertyIsEnumerable('map'));
+console.log(window.propertyIsEnumerable('innerHeight'));
+
+
+// {}.isPrototype(valor);
+// Verifica se é protótipo do valor passado
+console.log(Array.prototype.isPrototypeOf(mercado));
+console.log(String.prototype.isPrototypeOf('S'))
+
+
+// {}.toString
+// Retorna o tipo do objeto. O problema é toString() ser uma função dos protótipos de Array, String e mais. Por isso é comum utilizarmos a função direto do Object.prototype.toString.call(valor)
+
+console.log(mercado);
+console.log(mercado.toString());
+console.log(typeof mercado);
+console.log(Object.prototype.toString.call(mercado));
+
+const frase = 'Uma string';
+console.log(frase.toString());
+console.log(typeof frase);
+console.log(Object.prototype.toString.call(frase));
+
+const carroLuxo = {marca: 'Ford'};
+console.log(carroLuxo.toString());
+console.log(typeof carroLuxo);
+console.log(Object.prototype.toString.call(carroLuxo));
