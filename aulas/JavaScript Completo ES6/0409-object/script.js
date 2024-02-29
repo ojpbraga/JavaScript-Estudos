@@ -72,7 +72,7 @@ Object.defineProperties(motoHome, {
         value: 2,
         configurable: false, // Impede deletar e mudar o valor
         writable: true, // consegue mudar o valor
-        enumerable: false, // torna enumaravel
+        enumerable: false, // torna enumaravel 
     },
 })
 
@@ -91,6 +91,7 @@ const casa = {
 
 Object.defineProperties(casa, {
     entradas: {
+        enumerable: true,
         get() { // pega a informação
             // return 2;
             return this._entradas; // "._" para não dar conflito
@@ -103,5 +104,111 @@ Object.defineProperties(casa, {
 
 console.log(casa)
 console.log(casa.entradas);
-casa.entradas = 4; // set
+// casa.entradas = 4; // set
 console.log(casa.entradas);
+
+
+// Object.getOwnPropertyDescriptors(obj)
+// Lista todos os métodos e propriedades de um objeto, com as suas derivadas configurações.
+
+console.log(Object.getOwnPropertyDescriptors(Array));
+// Métodos e propriedades de Array
+
+console.log(Object.getOwnPropertyDescriptors(Array.prototype));
+// Lista com métodos e propriedades do protótipo de Array
+
+console.log(Object.getOwnPropertyDescriptor(window, 'innerHeight'));
+// Puxa de uma única propriedade
+
+console.log(Object.getOwnPropertyDescriptors(window));
+console.log(Object.getOwnPropertyDescriptors(casa));
+
+
+// Object.keys(obj), Object.values(obj) e Object.entries(obj)
+// Object.values(obj) retorna uma array com as chaves de todas as propriedades diretas e enumaráveis do objeto.
+// Object.values(obj) retorna uma array com os valores do objeto
+// Object.entries(obj) retorna uma array com arrays contendo a chave e valor
+
+Object.keys(Array);
+// [] vazia, pois não possui propriedades enumeráveis
+
+const automovel = {
+    marca: 'Ford',
+    ano: 2018,
+}
+
+console.log(Object.keys(carro)); // retorna as chaves "marca" e "ano"
+
+console.log(Object.values(carro)); // retorna os valores do objeto
+
+console.log(Object.entries(carro)); // retorna a chave e o valor
+
+// Alguns métodos quando utilizado o getOwnPropertyDescriptors não aparecerão, porque encontram-se com enumerable: false
+
+// Ex.:
+console.log(Object.keys(casa)); // ['trancada', '_entradas']
+
+// Depois de adicionado enumerable na propriedade:
+console.log(Object.keys(casa)); // ['trancada', 'entradas', '_entradas']
+
+console.log(Object.values(casa));
+
+console.log(Object.entries(casa));
+
+
+// Object.getOwnPropertyNames(obj)
+// Retorna uma array com todas as propriedades diretas do objeto (não retorna as do protótipo).
+
+console.log(Object.getOwnPropertyNames(Array)); // Propriedades diretas do objeto
+// ['length', 'name', 'prototype', 'isArray', 'from', 'of', 'fromAsync']
+// Retorna os não enumeráveis também, diferente dos keys
+
+console.log(Object.getOwnPropertyNames(Array.prototype));
+// [..., 'filter', 'map', 'every', 'some', 'reduce', ...]
+
+const ford = {
+    marca: 'Ford',
+    ano: 2018,
+} 
+
+console.log(Object.getOwnPropertyNames(ford));
+
+
+// Object.getPrototypeOf() e Object.is()
+// Object.getPrototypeOf() retorna o protótipo do objeto. Object.is(obj1, obj2) verifica se os objetos são iguais e retorna true ou false.
+
+const frutas = ['Banana', 'Pêra'];
+
+console.log(Object.getPrototypeOf(frutas));
+console.log(Array.prototype); // É o mesmo retorno
+console.log(Object.getPrototypeOf(' '));
+
+const frutas1 = ['Banana', 'Pêra'];
+const novaFruta = frutas1;
+const frutas2 = ['Banana', 'Pêra'];
+
+console.log(Object.is(frutas1, frutas2)); // false, pois não são o mesmo objeto, ou seja, se eu modificar uma das arrays, a outra não será alterada
+console.log(Object.is(frutas1, novaFruta));
+
+
+// Object.freeze(), Object.seal(), Object.preventExtensions()
+// Object.freeze() impede qualquer mudança nas propriedades. Object.seal() previne a adição de novas propriedades e impede que as atuais sejam deletadas. Object.preventExtensions() previne a adição de novas propriedades.
+
+console.log(carro);
+
+Object.preventExtensions(carro);
+carro.portas = 4;
+delete carro.marca;
+
+Object.seal(carro); // Não pode deletar, nem adicionar
+carro.portas = 4;
+delete carro.ano;
+
+Object.freeze(carro);
+carro.marca = 'Honda';
+console.log(carro);
+
+console.log(Object.isFrozen(carro)); 
+console.log(Object.isExtensible(carro));
+console.log(Object.isSealed(carro)); // Só é extensivel, quando não se previne a extensão
+
