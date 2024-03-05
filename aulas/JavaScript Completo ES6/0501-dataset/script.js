@@ -9,7 +9,7 @@ function initTabNav() {
       tabContent.forEach((section) => {
         section.classList.remove('ativo');
       });
-      tabContent[index].classList.add('ativo');
+      tabContent[index].classList.add('ativo', tabContent[index].dataset.anime);
     }
 
     tabMenu.forEach((itemMenu, index) => {
@@ -124,3 +124,18 @@ divs.forEach((div) => {
 // Quando se é adicionado um novo data através do JS com mais de uma palavra, automaticamente é adicionado o traço
 div.dataset.totalHeight = 1000;
 console.log(div);
+
+// Exercícios
+// Adicione um atributo data-anime="show-down" e
+// data-anime="show-right" a todos as section's
+// com descricão dos animais.
+
+// Utilizando estes atributos, adicione a classe
+// show-down ou show-right a sua respectiva section
+// assim que a mesma aparecer na tela (animacao tab)
+
+// No CSS faça com que show-down anime de cima para baixo
+// e show-right continue com a mesma animação da esquerda
+// para a direita
+
+// Substitua todas as classes js- por data atributes. // Não feito.
