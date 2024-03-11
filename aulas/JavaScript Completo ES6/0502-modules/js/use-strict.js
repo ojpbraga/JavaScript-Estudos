@@ -6,7 +6,7 @@
 nome = 'Ford'; // Erro, variáveç global // Se a variável for const, ela não vaza para as propriedades do window
 delete Array.prototype; // erro, não deletável
 window.top = 200; // erro, não pode mudar
-const arguments = 3.4; // escrever palavra reservada
+//const arguments = 3.4; // escrever palavra reservada
 
 // Arquivo normal
 
