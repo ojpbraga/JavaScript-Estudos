@@ -32,10 +32,25 @@ const handleClick = {
 
 function handleChange(event) {
     const name = event.target.name;
-    const valor = event.target.value;
-    handleClick[name](valor);
+    const value = event.target.value;
+    handleClick[name](value);
+    saveValues(name, value);
     showCss();
 }
+
+function saveValues(name, value) {
+    localStorage[name] = value;
+}
+
+function setValues() {
+    const properties = Object.keys(localStorage);
+    properties.forEach((propertie) => {
+        handleClick[propertie](localStorage[propertie]);
+        controles.elements[propertie].value = localStorage[propertie];
+    });
+    showCss();
+}
+setValues();
 
 function showCss() {
     cssText.innerHTML = "<span>" + btn.style.cssText.split('; ').join(';</span><span>');
@@ -45,6 +60,7 @@ controles.addEventListener('change', handleChange);
 
 
 // LocalStorage
-// Objeto que salva dados local
+// Objeto que salva dados local, sem a "necessidade" de usar banco de dados
 
-// localStorage.nome = 'Andre'; 
+// localStorage.nome = 'Andre';
+// console.log(localStorage)
