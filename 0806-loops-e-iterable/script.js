@@ -89,3 +89,20 @@ do {
     console.log(i++);
 } while (i <= 5);
 
+
+// exercise 
+// Crie 4 li's na página
+// Utilizando o for...of
+// adicione uma classe a cada li
+const lists = document.querySelectorAll('li');
+for(const lista of lists) {
+    lista.classList.add('ativar');
+    console.log(lista);
+}
+
+// Utilize o for...in para listar
+// todos as propriedades e valores
+// do objeto window
+for(const key in window) {
+    console.log(`${key}: ${window[key]}`);
+}
